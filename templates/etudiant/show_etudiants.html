@@ -10,14 +10,32 @@
 <body>
 
 {{ etudiants }}
+<h1>listes des étudiants</h1>
 
-<table>
-    {% for etudiant in etudiants %}
-         <tr>
-                <td>{{ etudiant }}</td>
-           </tr>
+<a href="/etudiant/add" >ajouter un étudiant</a>
+
+{% if etudiants | length >= 1 %}
+    <table>
+        <tr>
+            <th>id</th><th>nom</th><th>groupe</th>
+        </tr>
+        {% for etudiant in etudiants %}
+            <tr>
+                {# commentaires : autre notation possible, on affiche un element du dictionnaire
+                <td>{{ etudiant['id'] }}</td><td>{{ etudiant['nom'] }}</td><td>{{ etudiant['groupe'] }}</td>
+            #}
+                <td>{{ etudiant.id }}</td>
+                <td>{{ etudiant.nom }}</td>
+                <td>{{ etudiant.groupe }}</td>
+                <td>
+                      <a href="/etudiant/edit?id={{ etudiant.id }}">editer</a>&nbsp;
+                      <a href="/etudiant/delete?id={{ etudiant.id }}" >supprimer</a>
+                  </td>
+            </tr>
         {% endfor %}
-</table>
-
+    </table>
+{% else %}
+    <h2> la liste des étudiants est vide</h2>
+{% endif %}
 </body>
 </html>

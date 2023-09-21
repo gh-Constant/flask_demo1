@@ -34,5 +34,32 @@ def show_etudiants():
     return render_template('etudiant/show_etudiants.html', etudiants=liste_etudiants )
 
 
+@app.route('/etudiant/add')
+def add_etudiant():
+    print('''affichage du formulaire pour saisir un étudiant''')
+    return render_template('etudiant/add_etudiant.html')
+
+@app.route('/etudiant/delete')
+def delete_etudiant():
+    print('''suppression d'un étudiant''')
+    print(request.args)
+    #print(request.args['id'])
+    print(request.args.get('id'))
+    print(request.args.get('id',0))
+    return redirect('/etudiant/show')
+
+@app.route('/etudiant/edit')
+def edit_etudiant():
+    print('''affichage du formulaire pour modifier un étudiant''')
+    print(request.args)
+    print(request.args.get('id'))
+    id=request.args.get('id')
+    if id != None and id.isnumeric():
+        indice = int(id)
+        etudiant=liste_etudiants[indice-1]
+    else:
+        etudiant=[]
+    return render_template('etudiant/edit_etudiant.html', etudiant=etudiant)
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
