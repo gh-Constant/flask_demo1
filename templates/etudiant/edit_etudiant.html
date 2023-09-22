@@ -10,17 +10,17 @@
 <body>
     <div class="container mt-4">
         <h1>Formulaire d'Étudiant</h1>
-        <form>
+        <form action="/etudiant/edit" method="post">
             <!-- Champs pour saisir les informations de l'étudiant -->
-            <input type="hidden" name="id" value="{{ etudiant.id }}">
+            <input type="hidden" name="id" value="{{ etudiant.id }}" >
             <div class="mb-3">
                 <label for="nom" class="form-label">Nom de l'étudiant :</label>
-                <input type="text" class="form-control" id="nom" placeholder="Entrez le nom de l'étudiant" required value="{{ etudiant.nom }}">
+                <input type="text" class="form-control" id="nom" placeholder="Entrez le nom de l'étudiant" required value="{{ etudiant.nom }}" name="nom">
             </div>
             {{ etudiant.groupe }}
             <div class="mb-3">
                 <label for="groupe" class="form-label">Groupe de l'étudiant :</label>
-                <select class="form-select" id="groupe" required>
+                <select class="form-select" id="groupe" required name="groupe">
                     <option value="A1">A1</option>
                     <option value="A2">A2</option>
                     <option value="B1">B1</option>
