@@ -51,7 +51,7 @@ def edit_etudiant():
 
 
 @app.route('/etudiant/add', methods=['POST'])
-def vaid_add_etudiant():
+def valid_add_etudiant():
     print('''ajout de l'étudiant dans le tableau''')
     nom = request.form['nom']
     nom = request.form.get('nom')
