@@ -31,15 +31,13 @@ def add_etudiant():
 def delete_etudiant():
     print('''suppression d'un étudiant''')
     print(request.args)
-    #print(request.args['id'])
     print(request.args.get('id'))
-    print(request.args.get('id',0))
+    id=request.args.get('id',0)
     return redirect('/etudiant/show')
 
 @app.route('/etudiant/edit', methods=['GET'])
 def edit_etudiant():
     print('''affichage du formulaire pour modifier un étudiant''')
-    print(request.args)
     print(request.args.get('id'))
     id=request.args.get('id')
     if id != None and id.isnumeric():
@@ -53,7 +51,6 @@ def edit_etudiant():
 @app.route('/etudiant/add', methods=['POST'])
 def valid_add_etudiant():
     print('''ajout de l'étudiant dans le tableau''')
-    nom = request.form['nom']
     nom = request.form.get('nom')
     groupe = request.form.get('groupe')
     message = 'nom :' + nom + ' - groupe :' + groupe
