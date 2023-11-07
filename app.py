@@ -43,9 +43,7 @@ def add_etudiant():
 def delete_etudiant():
     print('''suppression d'un étudiant''')
     print(request.args)
-    #print(request.args['id'])
     print(request.args.get('id'))
-    print(request.args.get('id',0))
     return redirect('/etudiant/show')
 
 @app.route('/etudiant/edit')
